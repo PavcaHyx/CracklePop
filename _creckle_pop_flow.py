@@ -1,8 +1,9 @@
 
 def get_result(start_number, end_number):
     result = []
-    end_number = end_number+1
-    for i in range(start_number, end_number):
+    start_number = int(start_number)
+    end_number = int(end_number)
+    for i in range(start_number, end_number + 1):
         if i % 3 == 0 and i % 5 == 0:
             result.append("CracklePop")
         elif i % 5 == 0:
@@ -13,9 +14,5 @@ def get_result(start_number, end_number):
             result.append(i)
     return result
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print(get_result(1, 100))
 
 
