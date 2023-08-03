@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="container">
+
+<form class="form-horizontal">
+
+<h1>Hi there!</h1>
+    <p> This tool will print numbers from <b>Start number</b> to <b>End number</b>(inclusive).<br><br>
+    If the number is divisible by  3, instead of the number the word "Crackle" will be printed.<br>
+    If the number is divisible by  5, instead of the number the word "Pop" will be printed.<br>
+    If the number is divisible by both 3 and 5, instead of the number the word "CracklePop" will be printed.<br><br>
+    Please, fill your numbers!
+</p>
+
+</br>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label" for="start_number">Start number</label>
+            <div class="controls">
+                <input type="text" class="form-control" id="start_number" name="start_number" value="{{ start_number }}" required>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <label class="control-label" for="end_number">End number</label>
+            <div class="controls">
+                <input type="text" class="form-control" id="end_number" name="end_number" value="{{ end_number }}" required>
+            </div>
+        </div>
+    </div>
+</div>
+
+</br>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">Run</button>
+</div>
+</form>
+
+{% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+        <p class="alert alert-warning" role="alert">{{ message }}</p>
+    {% endfor %}
+{% endwith %}
+
+
+{% if result %}
+    <h1>Results for numbers {{ start_number }} to {{ end_number }}</h1>
+    <br>
+    {% for item in result %}
+    <p>{{ item }}</p>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
